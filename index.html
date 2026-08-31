@@ -453,6 +453,43 @@ html[dir="rtl"] .about-timeline{border-right:1px solid var(--border); border-lef
 .skill-track{height:4px; background:rgba(255,255,255,.08); border-radius:4px; overflow:hidden;}
 .skill-fill{height:100%; width:0%; background:linear-gradient(90deg,var(--gold),#f4e2bb); border-radius:4px; transition:width 1.6s var(--ease);}
 
+/* ===== Ad Content Videos ===== */
+.ad-content{padding:150px 0; border-top:1px solid var(--border);}
+.ad-video-grid{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:30px; margin-top:50px;
+}
+@media(max-width:700px){ .ad-video-grid{grid-template-columns:1fr; gap:22px;} }
+.ad-video-card{
+  position:relative; background:linear-gradient(160deg,var(--card),var(--card-2));
+  border:1px solid var(--border-strong); border-radius:calc(var(--radius) + 4px);
+  overflow:hidden; isolation:isolate;
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s var(--ease);
+  box-shadow:0 10px 30px -18px rgba(0,0,0,.7);
+}
+.ad-video-card::before{
+  content:''; position:absolute; inset:0; padding:1px; border-radius:inherit;
+  background:linear-gradient(135deg,rgba(201,168,106,.55),rgba(201,168,106,0) 35%,rgba(201,168,106,0) 65%,rgba(201,168,106,.55));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor; mask-composite:exclude;
+  opacity:.7; transition:opacity .45s var(--ease); pointer-events:none; z-index:2;
+}
+.ad-video-card:hover{
+  border-color:var(--gold); transform:translateY(-8px);
+  box-shadow:0 26px 50px -20px rgba(201,168,106,.35), 0 10px 30px -14px rgba(0,0,0,.8);
+}
+.ad-video-card:hover::before{opacity:1;}
+.ad-video-card video{
+  width:100%; max-width:100%; aspect-ratio:9/16; object-fit:cover;
+  background:#050505; display:block; border-radius:calc(var(--radius) + 4px) calc(var(--radius) + 4px) 0 0;
+}
+.ad-video-label{
+  display:flex; flex-direction:column; gap:5px; padding:18px 20px 20px;
+  border-top:1px solid var(--gold-soft); position:relative; z-index:1;
+}
+.ad-video-label span{font-family:var(--font-ar-display); font-size:18px; font-weight:700; color:var(--gold); letter-spacing:.01em;}
+.ad-video-label small{color:var(--muted); font-size:12.5px; font-family:var(--font-en); letter-spacing:.04em;}
+
 /* ===== Testimonials ===== */
 .testimonials{padding:150px 0; border-top:1px solid var(--border);}
 .testi-track-wrap{overflow:hidden;}
@@ -878,19 +915,11 @@ html[dir="rtl"] .about-timeline{border-right:1px solid var(--border); border-lef
           <div class="skill-track"><div class="skill-fill"></div></div>
         </div>
         <div class="skill-bar reveal-up" data-level="88">
-          <div class="skill-bar-top"><span>HTML</span><em>88%</em></div>
+          <div class="skill-bar-top"><span>صناعة مواقع بمساعدة AI</span><em>88%</em></div>
           <div class="skill-track"><div class="skill-fill"></div></div>
         </div>
       </div>
       <div class="skill-col">
-        <div class="skill-bar reveal-up" data-level="86">
-          <div class="skill-bar-top"><span>CSS</span><em>86%</em></div>
-          <div class="skill-track"><div class="skill-fill"></div></div>
-        </div>
-        <div class="skill-bar reveal-up" data-level="80">
-          <div class="skill-bar-top"><span>JavaScript</span><em>80%</em></div>
-          <div class="skill-track"><div class="skill-fill"></div></div>
-        </div>
         <div class="skill-bar reveal-up" data-level="94">
           <div class="skill-bar-top"><span>Adobe Photoshop</span><em>94%</em></div>
           <div class="skill-track"><div class="skill-fill"></div></div>
@@ -899,14 +928,34 @@ html[dir="rtl"] .about-timeline{border-right:1px solid var(--border); border-lef
           <div class="skill-bar-top"><span>Adobe Illustrator</span><em>92%</em></div>
           <div class="skill-track"><div class="skill-fill"></div></div>
         </div>
-        <div class="skill-bar reveal-up" data-level="78">
-          <div class="skill-bar-top"><span>After Effects</span><em>78%</em></div>
-          <div class="skill-track"><div class="skill-fill"></div></div>
+        <div class="skill-bar reveal-up" data-level="85">
+          <div class="skill-bar-top"><span>صناعة فيديوهات إعلانية</span><em>85%</em></div>
+          <div class="skill-track"><div class="skill-fill" style="width:85%;"></div></div>
         </div>
-        <div class="skill-bar reveal-up" data-level="82">
-          <div class="skill-bar-top"><span>WordPress</span><em>82%</em></div>
-          <div class="skill-track"><div class="skill-fill"></div></div>
-        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 12: Ad Content Production -->
+<section class="ad-content" id="ad-content">
+  <div class="section-inner">
+    <div class="section-head reveal-up">
+      <span class="section-eyebrow">09 / صناعة المحتوى الإعلاني</span>
+      <h2 class="section-title">فيديوهات <span class="text-gold">إعلانية</span></h2>
+    </div>
+    <div class="ad-video-grid">
+      <div class="ad-video-card reveal-up">
+        <video src="video1.mp4" controls preload="metadata" playsinline></video>
+        <div class="ad-video-label"><span>إعلان لمنتج غذائي</span><small>Food Product Ad</small></div>
+      </div>
+      <div class="ad-video-card reveal-up">
+        <video src="video2.mp4" controls preload="metadata" playsinline></video>
+        <div class="ad-video-label"><span>إعلان لمنتج تكنولوجي</span><small>Tech Product Ad</small></div>
+      </div>
+      <div class="ad-video-card reveal-up">
+        <video src="video3.mp4" controls preload="metadata" playsinline></video>
+        <div class="ad-video-label"><span>إعلان لمنتج بنائي</span><small>Construction Product Ad</small></div>
       </div>
     </div>
   </div>
